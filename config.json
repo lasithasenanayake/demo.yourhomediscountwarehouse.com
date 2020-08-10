@@ -6,6 +6,7 @@
         "FBLAPP_S":"58222a1cf78f04e2073173f480a5b40b",
         "FBCAPP_DOMAIN":"localhost/git/davvag-core",
         "APPURL":"https://localhost/git/davvag-core/#/app",
-        "DATASTORE_DOMAIN":"panther.davvag.com"
+        "DATASTORE_DOMAIN":"panther.davvag.com",
+        "AUTH_DOMAIN":"panther.davvag.com"
     }
 }
