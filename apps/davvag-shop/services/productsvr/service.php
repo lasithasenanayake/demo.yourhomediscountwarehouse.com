@@ -65,7 +65,7 @@ class ProductServices {
                     <meta property="og:category" content="'.urldecode($data->cat).'" />
                     <meta name="og:description" content="'.urldecode(strip_tags($data->caption)).'">
                     <meta name="og:tags"  content="'.urldecode($data->keywords).'">
-                    <meta name="og:image"  content="http://'.$_SERVER["HTTP_HOST"].'/components/dock/soss-uploader/service/get/product/'.$_GET["q"]."-".$data->imgurl.'">
+                    <meta name="og:image"  content="http://'.$_SERVER["HTTP_HOST"].'/components/dock/soss-uploader/service/get/products/'.$_GET["q"]."-".$data->imgurl.'">
                     <meta property="og:price:amount" content="'.urldecode($data->price).'">
                     <meta property="og:price:currency" content="'.urldecode($data->currencycode).'">
                     <meta property="og:availability" content="instock" />
