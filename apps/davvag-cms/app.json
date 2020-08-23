@@ -96,7 +96,7 @@
                 "admin": []
             },
             "routes":{
-                "home" : "/home",
+                "home" : "/app/davvag-shop",
                 "notFound": "/notFound",
                 "partials" : {
                     "/" : "partial-album-view",
