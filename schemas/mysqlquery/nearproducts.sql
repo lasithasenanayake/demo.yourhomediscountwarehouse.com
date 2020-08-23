@@ -33,9 +33,9 @@ ELSE
 		SELECT *,  MATCH(name, caption,keywords) AGAINST(q) AS score From products where showonstore='y' and MATCH(name, caption,keywords) AGAINST(q) Limit param_page, param_size;
 	else
         IF param_catid <>"" THEN 
-		    SELECT * From products where showonstore='y' Limit param_page, param_size;
+		    SELECT * From products where showonstore='y' and catogory=param_catid Limit param_page, param_size;
         ELSE
-            SELECT * From products where showonstore='y' and catogory=param_catid Limit param_page, param_size;
+            SELECT * From products where showonstore='y'  Limit param_page, param_size;
         end if;
 	end if;
 END IF;

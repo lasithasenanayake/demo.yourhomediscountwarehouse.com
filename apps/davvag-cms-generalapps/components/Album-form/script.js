@@ -27,7 +27,7 @@ WEBDOCK.component().register(function(exports){
             gotoUom: gotoUom,
             navigateBack: function(){
                 handler1 = exports.getShellComponent("soss-routes");
-                handler1.appNavigate("../articalall");
+                handler1.appNavigate("../albumall");
             },removeImage: removeImage,
             onFileChange: function(e) {
                 var files = e.target.files || e.dataTransfer.files;
@@ -66,7 +66,7 @@ WEBDOCK.component().register(function(exports){
             var query=[{storename:"d_cms_cat_v1",search:""}];
             //var tmpmenu=[];
             //bindData.TopButtons=[];
-            editor=$("#txtEditor").Editor();
+            //editor=$("#txtEditor").Editor();
             menuhandler.services.q(query)
                         .then(function(r){
                             console.log(JSON.stringify(r));
@@ -144,7 +144,7 @@ WEBDOCK.component().register(function(exports){
                 //imagecount++;
                 console.log(i);
 
-                        uploaderInstance.services.uploadFile(newfiles[i], "d_cms_artical", productId+"-"+newfiles[i].name )
+                        uploaderInstance.services.uploadFile(newfiles[i], "d_cms_album", productId+"-"+newfiles[i].name )
                         .then(function(result2){
                             $.notify("Profile Image Has been uploaded", "info");
                             completed++;
@@ -172,7 +172,7 @@ WEBDOCK.component().register(function(exports){
 
     function loadCategory(scope){
         if (routeData.id){
-            handler.transformers.getArticalById(routeData.id)
+            handler.transformers.getAlbumById(routeData.id)
             .then(function(result){
                 if (result.result.length !=0){
                     bindData.product = result.result[0];
@@ -196,11 +196,11 @@ WEBDOCK.component().register(function(exports){
         
             });
 
-            handler.transformers.getImagesByArticalId(routeData.id).then(function(result){
+            handler.transformers.getImagesByAlbumId(routeData.id).then(function(result){
                 if (result.result.length !=0){
                     bindData.p_image =  result.result;
                     for (var i = 0; i < bindData.p_image.length; i++) {
-                        bindData.p_image[i].scr='components/dock/soss-uploader/service/get/d_cms_artical/'+bindData.product.id+'-'+bindData.p_image[i].name;
+                        bindData.p_image[i].scr='components/dock/soss-uploader/service/get/d_cms_album/'+bindData.product.id+'-'+bindData.p_image[i].name;
                     }
                     //bindData.p_image =[];// 'components/dock/soss-uploader/service/get/d_cms_artical/'+bindData.product.id;
                 }
@@ -214,22 +214,22 @@ WEBDOCK.component().register(function(exports){
     var validator;
     function loadValidator(){
         validator = validatorInstance.newValidator (scope);
-        validator.map ("product.title",true, "You should enter a name");
-        validator.map ("product.summery",true, "You should enter a summery");
-        validator.map ("product.content",true, "You should enter a content");
-        validator.map ("product.tags",true, "You should enter a tags");
+       // validator.map ("product.title",true, "You should enter a name");
+        //validator.map ("product.summery",true, "You should enter a summery");
+        //validator.map ("product.content",true, "You should enter a content");
+        //validator.map ("product.tags",true, "You should enter a tags");
     }
     
 
     function submit(){
         $('#send').prop('disabled', true);
-        bindData.product.content=$("#txtEditor").data("editor").html(); 
+        //bindData.product.content=$("#txtEditor").data("editor").html(); 
         bindData.submitErrors = validator.validate(); 
         var product =bindData.product;
         
         if (!bindData.submitErrors){
-            product.content=product.content.split("'").join("~^");
-            product.content=product.content.split('"').join("~*");
+            //product.content=product.content.split("'").join("~^");
+            //product.content=product.content.split('"').join("~*");
             bindData.product.Images=[];
             for (var i = 0; i < bindData.p_image.length; i++) {
                 bindData.product.Images.push({id:bindData.p_image[i].id,name:bindData.p_image[i].name,
@@ -239,7 +239,7 @@ WEBDOCK.component().register(function(exports){
             bindData.product.RemovedImages=bindData.p_removed;
             
 
-            var promiseObj = handler.services.SaveArtical(bindData.product);
+            var promiseObj = handler.services.SaveAlbum(bindData.product);
             //else promiseObj = handler.transformers.insertArtical (bindData.product);
             
 
@@ -262,7 +262,7 @@ WEBDOCK.component().register(function(exports){
 
     function gotoUom(){
         handler1 = exports.getShellComponent("soss-routes");
-        handler1.appNavigate("../articalall");
+        handler1.appNavigate("../albumall");
     }
 
 
